@@ -73,6 +73,11 @@ namespace GenHTTP_WebServer
         {
             new Game ()
             {
+                Name = "First Aid Skills",
+                Path = "fas"
+            },
+            new Game ()
+            {
                 Name = "Eternal: Embers",
                 Path = "eternal-ember"
             },
@@ -80,6 +85,11 @@ namespace GenHTTP_WebServer
             {
                 Name = "Aonar - Alone",
                 Path = "aonar"
+            },
+            new Game ()
+            {
+                Name = "SubterraNEON",
+                Path = "subterraneon"
             }
         };
     }
@@ -240,7 +250,7 @@ namespace GenHTTP_WebServer
 
             return new AdminLteBuilder().Title("Dracon Interactive")
                                         .Logo(Download.From(Resource.FromAssembly("logo.png")))
-                                        .UserProfile((r, h) => new UserProfile("Dracon-A", "/avatar.png", "/user"))
+                                        .UserProfile((r, h) => new UserProfile("User A-01", "/avatar.png", "/user"))
                                         .FooterLeft((r, h) => Helpers.Version)
                                         .FooterRight((r, h) => "Peter M Carey (2021)")
                                         .Sidebar((r, h) => SideBarConstructor())
