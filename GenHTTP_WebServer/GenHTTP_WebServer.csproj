@@ -9,18 +9,38 @@
     <None Remove="avatar.png" />
     <None Remove="c1.html" />
     <None Remove="c2.html" />
+    <None Remove="Games\aonar.html" />
+    <None Remove="Games\eternal-ember - Copy.html" />
     <None Remove="header.jpg" />
+    <None Remove="Images\logo.png" />
     <None Remove="index.html" />
     <None Remove="logo.png" />
+    <None Remove="Models\c1 - Copy.html" />
     <None Remove="Models\nr1.html" />
     <None Remove="Models\ws1.html" />
     <None Remove="Notifications.html" />
     <None Remove="sidebar.html" />
+    <None Remove="Systems\draconic-link.html" />
     <None Remove="user.html" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Games\aonar.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\draconic-link.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\cgrs.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Games\eternal-ember.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="sidebar.html">
@@ -45,9 +65,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="index.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Notifications.html">

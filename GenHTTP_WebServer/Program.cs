@@ -24,7 +24,6 @@ namespace GenHTTP_WebServer
         public class AI
         {
             public string Name;
-            public string Description;
             public string Path;
 
             public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage ()
@@ -38,26 +37,76 @@ namespace GenHTTP_WebServer
             new AI ()
             {
                 Name = "C-1",
-                Description = "Contextual AI - 1",
                 Path = "c1"
             },
             new AI ()
             {
                 Name = "C-2",
-                Description = "Contextual AI - 2",
                 Path = "c2"
             },
             new AI ()
             {
                 Name = ".NR-1",
-                Description = ".Net / Rasa Hybrid Model - 1",
                 Path = "nr1"
             },
             new AI ()
             {
                 Name = "WS-1",
-                Description = "Web Server Model - 1",
                 Path = "ws1"
+            }
+        };
+    }
+    public static class GameHandler
+    {
+        public class Game
+        {
+            public string Name;
+            public string Path;
+
+            public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage()
+            {
+                return ModScriban.Page(Resource.FromAssembly(Path + ".html")).Title(Name);
+            }
+        }
+
+        public static Game[] all = new Game[]
+        {
+            new Game ()
+            {
+                Name = "Eternal: Embers",
+                Path = "eternal-ember"
+            },
+            new Game ()
+            {
+                Name = "Aonar - Alone",
+                Path = "aonar"
+            }
+        };
+    }
+    public static class SystemHandler
+    {
+        public class System
+        {
+            public string Name;
+            public string Path;
+
+            public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage()
+            {
+                return ModScriban.Page(Resource.FromAssembly(Path + ".html")).Title(Name);
+            }
+        }
+
+        public static System[] all = new System[]
+        {
+            new System ()
+            {
+                Name = "CGRS",
+                Path = "cgrs"
+            },
+            new System ()
+            {
+                Name = "Draconic Link",
+                Path = "draconic-link"
             }
         };
     }
@@ -65,7 +114,7 @@ namespace GenHTTP_WebServer
     {
         public static int Main(string[] args)
         {
-            bool startTunnel = true;
+            bool startTunnel = false;
             if (startTunnel)
             {
                 StartTunnel();
@@ -87,6 +136,7 @@ namespace GenHTTP_WebServer
             processInfo.CreateNoWindow = false;
             process = Process.Start(processInfo);
         }
+
         private static IHandlerBuilder Setup()
         {
             var resources = new string[]
@@ -99,22 +149,46 @@ namespace GenHTTP_WebServer
 
             var userPage = ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems");
 
-            var modelPage = Page.From("Content", String.Format("Models. We current are hosting {0} AI's", AIHandler.all.Length))
+            var modelPage = Page.From("AI Models", String.Format("{0} active Artificial Intelligences", AIHandler.all.Length))
                 .Description("Content Page");
+
+            var gamePage = Page.From("Games", "Games! Both currently in development, and those that have been shelved for the time being.")
+                .Description("Games Page");
+
+            var systemsPage = Page.From("Systems", "Systems for improving quality of life for both developers and players.")
+                .Description("Systems Page");
 
             var reportsPage = Page.From("Reports", "0 New Reports")
                 .Description("Reports Page");
 
+            var games = Layout.Create()
+                .Index(gamePage);
+
             var models = Layout.Create()
                 .Index(modelPage);
+
+            var systems = Layout.Create()
+                .Index(systemsPage);
 
             foreach (var ai in AIHandler.all)
             {
                 models.Add(ai.Path, ai.GetPage());
             }
 
+            foreach (var game in GameHandler.all)
+            {
+                games.Add(game.Path, game.GetPage());
+            }
+
+            foreach (var system in SystemHandler.all)
+            {
+                systems.Add(system.Path, system.GetPage());
+            }
+
             var root = Layout.Create()
+                .Add("games", games)
                 .Add("models", models)
+                .Add("systems", systems)
                 .Add("reports", reportsPage)
                 .Add("user", userPage)
                 .Index(index);
@@ -129,9 +203,24 @@ namespace GenHTTP_WebServer
             {
                 modelLinks.Add((ai.Path + "/", ai.Name));
             }
+
+            var gameLinks = new List<(string, string)>();
+            foreach (var game in GameHandler.all)
+            {
+                gameLinks.Add((game.Path + "/", game.Name));
+            }
+
+            var systemLinks = new List<(string, string)>();
+            foreach (var system in SystemHandler.all)
+            {
+                systemLinks.Add((system.Path + "/", system.Name));
+            }
+
             var menu = Menu.Empty()
                     .Add("{website}", "Home")
-                    .Add("models/", "Models", modelLinks);
+                    .Add("games/", "Games", gameLinks)
+                    .Add("models/", "AI Models", modelLinks)
+                    .Add("systems/", "Systems", systemLinks);
 
             var website = Website.Create()
                 .Theme(GetAdminLTE())
@@ -149,7 +238,7 @@ namespace GenHTTP_WebServer
             var notifications = ModScriban.Template<IBaseModel>(Resource.FromAssembly("Notifications.html"))
                                           .Build();
 
-            return new AdminLteBuilder().Title("Dracon AI")
+            return new AdminLteBuilder().Title("Dracon Interactive")
                                         .Logo(Download.From(Resource.FromAssembly("logo.png")))
                                         .UserProfile((r, h) => new UserProfile("Dracon-A", "/avatar.png", "/user"))
                                         .FooterLeft((r, h) => Helpers.Version)
