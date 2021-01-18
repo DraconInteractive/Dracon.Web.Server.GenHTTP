@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="avatar.png" />
+    <None Remove="c1.html" />
+    <None Remove="c2.html" />
+    <None Remove="header.jpg" />
+    <None Remove="index.html" />
+    <None Remove="logo.png" />
+    <None Remove="Models\nr1.html" />
+    <None Remove="Models\ws1.html" />
+    <None Remove="Notifications.html" />
+    <None Remove="sidebar.html" />
+    <None Remove="user.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sidebar.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\ws1.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\nr1.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\c2.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\c1.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\header.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notifications.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GenHTTP.Core" Version="5.1.1" />
+    <PackageReference Include="GenHTTP.Modules.Basics" Version="5.1.0" />
+    <PackageReference Include="GenHTTP.Modules.Layouting" Version="5.1.0" />
+    <PackageReference Include="GenHTTP.Modules.Placeholders" Version="5.1.0" />
+    <PackageReference Include="GenHTTP.Modules.Websites" Version="5.1.0" />
+    <PackageReference Include="GenHTTP.Themes.AdminLTE" Version="5.1.0" />
+    <PackageReference Include="GenHTTP.Themes.Arcana" Version="5.1.0" />
+  </ItemGroup>
+
+</Project>
