@@ -26,16 +26,38 @@ namespace GenHTTP_WebServer
         public class AI
         {
             public string Name;
-            public string Path;
-            public int ID;
+            public string Ref;
+            public string Subtitle;
+            public string Description;
+            public string Status;
+            public string Language;
+            public string[] Capabilities;
+            public string Link;
+            public string LinkName;
+            public string Extra;
+
             public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage ()
             {
                 //ModScriban.Page(Resource.FromFile("./Shop.html"), (request, handler) => new ShopModel(request, handler, LoadBasket()));
-                string text = File.ReadAllText("./Models/" + Path + ".html");
-                text = text.Replace("[--out--]", "5");
-                File.WriteAllText("./Models/" + Path + ".html", text);
+                string text = File.ReadAllText("./Models/ai.html");
+                text = text.Replace("[--status--]", Status)
+                    .Replace("[--subtitle--]", Subtitle)
+                    .Replace("[--description--]", Description)
+                    .Replace("[--language--]", Language)
+                    .Replace("[--extra--]", Extra)
+                    .Replace("[--link--]", Link)
+                    .Replace("[--linkname--]", LinkName);
 
-                return ModScriban.Page(Resource.FromString(text));
+                string c = "";
+                if (Capabilities != null && Capabilities.Length > 0)
+                {
+                    foreach (string cc in Capabilities)
+                    {
+                        c += "<li>" + cc + "</li>";
+                    }
+                }
+                text = text.Replace("[--capabilities--]", c);
+                return ModScriban.Page(Resource.FromString(text)).Title(Subtitle);
             }
         }
 
@@ -44,30 +66,56 @@ namespace GenHTTP_WebServer
             new AI ()
             {
                 Name = "C-1",
-                Path = "c1",
-                ID = 0
+                Ref = "c1",
+                Subtitle = "Contextual Model C-1",
+                Description = "Intelligence utilising pre-scripted commands for action and response feedback.",
+                Language = "C#",
+                Capabilities = new string[] {"It works", "Maybe"},
+                Extra = "",
+                Link = "http://www.google.com.au",
+                LinkName = "Google",
+                Status = "Idle"
             },
             new AI ()
             {
                 Name = "C-2",
-                Path = "c2",
-                ID = 1
+                Ref = "c2",
+                Subtitle = "Contextual Model C-2",
+                Description = "Intelligence utilising pre-scripted commands for action and response feedback.",
+                Language = "C#",
+                Capabilities = new string[] {"It works", "Maybe"},
+                Extra = "",
+                Link = "http://www.google.com.au",
+                LinkName = "Google",
+                Status = "Idle"
             },
             new AI ()
             {
                 Name = ".NR-1",
-                Path = "nr1",
-                ID = 2
+                Ref = "nr1",
+                Subtitle = "Hybrid .Net + RASA ML Agent",
+                Description = "description",
+                Language = "C#, Python",
+                Capabilities = new string[] {"It works", "Maybe"},
+                Extra = "",
+                Link = "http://www.google.com.au",
+                LinkName = "Google",
+                Status = "Halted"
             },
             new AI ()
             {
-                Name = "WS-1",
-                Path = "ws1",
-                ID = 3
+                Name = "MBF-1",
+                Ref = "mbf1",
+                Subtitle = "Microsoft Bot Framework - Medical",
+                Description = "description",
+                Language = "C#",
+                Capabilities = new string[] {"It works", "Maybe"},
+                Extra = "",
+                Link = "http://www.google.com.au",
+                LinkName = "Google",
+                Status = "In Development"
             }
         };
-
-
     }
     public static class GameHandler
     {
@@ -200,7 +248,7 @@ namespace GenHTTP_WebServer
 
             foreach (var ai in AIHandler.all)
             {
-                models.Add(ai.Path, ai.GetPage());
+                models.Add(ai.Ref, ai.GetPage());
             }
 
             foreach (var game in GameHandler.all)
@@ -229,7 +277,7 @@ namespace GenHTTP_WebServer
             var modelLinks = new List<(string, string)>();
             foreach (var ai in AIHandler.all)
             {
-                modelLinks.Add((ai.Path + "/", ai.Name));
+                modelLinks.Add((ai.Ref + "/", ai.Name));
             }
 
             var gameLinks = new List<(string, string)>();

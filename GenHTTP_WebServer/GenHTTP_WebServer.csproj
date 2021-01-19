@@ -18,9 +18,8 @@
     <None Remove="Images\logo.png" />
     <None Remove="index.html" />
     <None Remove="logo.png" />
+    <None Remove="Models\ai.html" />
     <None Remove="Models\c1 - Copy.html" />
-    <None Remove="Models\nr1.html" />
-    <None Remove="Models\ws1.html" />
     <None Remove="Notifications.html" />
     <None Remove="sidebar.html" />
     <None Remove="Systems\draconic-link.html" />
@@ -61,16 +60,7 @@
     <EmbeddedResource Include="user.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Models\ws1.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Models\nr1.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Models\c2.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Models\c1.html">
+    <Content Include="Models\ai.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Images\header.jpg">
