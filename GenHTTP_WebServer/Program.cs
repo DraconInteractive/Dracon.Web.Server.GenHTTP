@@ -16,6 +16,8 @@ using GenHTTP.Modules.Placeholders;
 
 using GenHTTP.Themes.AdminLTE;
 using System.Diagnostics;
+using GenHTTP.Api.Protocol;
+using System.IO;
 
 namespace GenHTTP_WebServer
 {
@@ -25,10 +27,15 @@ namespace GenHTTP_WebServer
         {
             public string Name;
             public string Path;
-
+            public int ID;
             public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage ()
             {
-                return ModScriban.Page(Resource.FromAssembly(Path + ".html")).Title(Name);
+                //ModScriban.Page(Resource.FromFile("./Shop.html"), (request, handler) => new ShopModel(request, handler, LoadBasket()));
+                string text = File.ReadAllText("./Models/" + Path + ".html");
+                text = text.Replace("[--out--]", "5");
+                File.WriteAllText("./Models/" + Path + ".html", text);
+
+                return ModScriban.Page(Resource.FromString(text));
             }
         }
 
@@ -37,24 +44,30 @@ namespace GenHTTP_WebServer
             new AI ()
             {
                 Name = "C-1",
-                Path = "c1"
+                Path = "c1",
+                ID = 0
             },
             new AI ()
             {
                 Name = "C-2",
-                Path = "c2"
+                Path = "c2",
+                ID = 1
             },
             new AI ()
             {
                 Name = ".NR-1",
-                Path = "nr1"
+                Path = "nr1",
+                ID = 2
             },
             new AI ()
             {
                 Name = "WS-1",
-                Path = "ws1"
+                Path = "ws1",
+                ID = 3
             }
         };
+
+
     }
     public static class GameHandler
     {
@@ -90,6 +103,11 @@ namespace GenHTTP_WebServer
             {
                 Name = "SubterraNEON",
                 Path = "subterraneon"
+            },
+            new Game ()
+            {
+                Name = "Dear God",
+                Path = "deargod"
             }
         };
     }
@@ -243,11 +261,13 @@ namespace GenHTTP_WebServer
         private static ITheme GetAdminLTE()
         {
             var menu = Menu.Empty()
-                           .Add("{website}/", "Home");
+                           .Add("{website}/", "Home")
+                           .Add("{website}/reports", "Reports");
 
             var notifications = ModScriban.Template<IBaseModel>(Resource.FromAssembly("Notifications.html"))
                                           .Build();
 
+            
             return new AdminLteBuilder().Title("Dracon Interactive")
                                         .Logo(Download.From(Resource.FromAssembly("logo.png")))
                                         .UserProfile((r, h) => new UserProfile("User A-01", "/avatar.png", "/user"))

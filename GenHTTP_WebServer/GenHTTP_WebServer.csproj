@@ -10,6 +10,7 @@
     <None Remove="c1.html" />
     <None Remove="c2.html" />
     <None Remove="Games\aonar.html" />
+    <None Remove="Games\deargod.html" />
     <None Remove="Games\eternal-ember - Copy.html" />
     <None Remove="Games\fas.html" />
     <None Remove="Games\subterraneon.html" />
@@ -27,6 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Games\deargod.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Games\subterraneon.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -57,18 +61,18 @@
     <EmbeddedResource Include="user.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\ws1.html">
+    <Content Include="Models\ws1.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Models\nr1.html">
+    </Content>
+    <Content Include="Models\nr1.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Models\c2.html">
+    </Content>
+    <Content Include="Models\c2.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Models\c1.html">
+    </Content>
+    <Content Include="Models\c1.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Images\header.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
