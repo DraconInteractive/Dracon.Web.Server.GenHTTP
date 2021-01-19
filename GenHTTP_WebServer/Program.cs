@@ -351,6 +351,6 @@ namespace GenHTTP_WebServer
 
     public static class Helpers
     {
-        public static string Version = "v0.0.3t";
+        public static string Version = "v0.0.4t";
     }
 }
