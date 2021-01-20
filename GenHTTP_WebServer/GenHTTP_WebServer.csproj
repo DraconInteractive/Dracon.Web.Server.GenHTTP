@@ -9,77 +9,94 @@
     <None Remove="avatar.png" />
     <None Remove="c1.html" />
     <None Remove="c2.html" />
-    <None Remove="Games\aonar.html" />
-    <None Remove="Games\deargod.html" />
-    <None Remove="Games\eternal-ember - Copy.html" />
-    <None Remove="Games\fas.html" />
-    <None Remove="Games\subterraneon.html" />
+    <None Remove="old.game\aonar.html" />
+    <None Remove="old.game\deargod.html" />
+    <None Remove="old.game\eternal-ember - Copy.html" />
+    <None Remove="old.game\fas.html" />
+    <None Remove="old.game\subterraneon.html" />
     <None Remove="header.jpg" />
     <None Remove="Images\logo.png" />
     <None Remove="index.html" />
     <None Remove="logo.png" />
     <None Remove="Models\ai.html" />
     <None Remove="Models\c1 - Copy.html" />
+    <None Remove="Models\game - Copy.html" />
+    <None Remove="Models\game.html" />
     <None Remove="Notifications.html" />
+    <None Remove="Pages\ai_index.html" />
+    <None Remove="Pages\reports.html" />
     <None Remove="sidebar.html" />
-    <None Remove="Systems\draconic-link.html" />
+    <None Remove="old.systems\draconic-link.html" />
     <None Remove="user.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Games\deargod.html">
+    <EmbeddedResource Include="old.game\deargod.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Games\subterraneon.html">
+    <EmbeddedResource Include="old.game\subterraneon.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Games\fas.html">
+    <EmbeddedResource Include="old.game\fas.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Games\aonar.html">
+    <EmbeddedResource Include="old.game\aonar.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systems\draconic-link.html">
+    <EmbeddedResource Include="old.systems\draconic-link.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systems\cgrs.html">
+    <EmbeddedResource Include="old.systems\cgrs.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\avatar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Games\eternal-ember.html">
+    <EmbeddedResource Include="old.game\eternal-ember.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="sidebar.html">
+    <EmbeddedResource Include="Pages\sidebar.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="user.html">
+    <EmbeddedResource Include="Pages\reports.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Models\ai.html">
+    <EmbeddedResource Include="Pages\user.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ai_index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\gamebase.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\game.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ai.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\header.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="index.html">
+    <EmbeddedResource Include="Pages\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notifications.html">
+    <EmbeddedResource Include="Pages\Notifications.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GenHTTP.Core" Version="5.1.1" />
-    <PackageReference Include="GenHTTP.Modules.Basics" Version="5.1.0" />
-    <PackageReference Include="GenHTTP.Modules.Layouting" Version="5.1.0" />
-    <PackageReference Include="GenHTTP.Modules.Placeholders" Version="5.1.0" />
-    <PackageReference Include="GenHTTP.Modules.Websites" Version="5.1.0" />
+    <PackageReference Include="GenHTTP.Core" Version="5.2.0" />
+    <PackageReference Include="GenHTTP.Modules.Basics" Version="5.2.0" />
+    <PackageReference Include="GenHTTP.Modules.Controllers" Version="5.2.0" />
+    <PackageReference Include="GenHTTP.Modules.Layouting" Version="5.2.0" />
+    <PackageReference Include="GenHTTP.Modules.Placeholders" Version="5.2.0" />
+    <PackageReference Include="GenHTTP.Modules.Websites" Version="5.2.0" />
     <PackageReference Include="GenHTTP.Themes.AdminLTE" Version="5.1.0" />
     <PackageReference Include="GenHTTP.Themes.Arcana" Version="5.1.0" />
   </ItemGroup>

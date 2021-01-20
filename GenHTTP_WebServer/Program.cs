@@ -18,105 +18,12 @@ using GenHTTP.Themes.AdminLTE;
 using System.Diagnostics;
 using GenHTTP.Api.Protocol;
 using System.IO;
+using GenHTTP.Modules.Controllers;
+
+using GenHTTP_WebServer.Controllers;
 
 namespace GenHTTP_WebServer
 {
-    public static class AIHandler
-    {
-        public class AI
-        {
-            public string Name;
-            public string Ref;
-            public string Subtitle;
-            public string Description;
-            public string Status;
-            public string Language;
-            public string[] Capabilities;
-            public string Link;
-            public string LinkName;
-            public string Extra;
-
-            public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage ()
-            {
-                //ModScriban.Page(Resource.FromFile("./Shop.html"), (request, handler) => new ShopModel(request, handler, LoadBasket()));
-                string text = File.ReadAllText("./Models/ai.html");
-                text = text.Replace("[--status--]", Status)
-                    .Replace("[--subtitle--]", Subtitle)
-                    .Replace("[--description--]", Description)
-                    .Replace("[--language--]", Language)
-                    .Replace("[--extra--]", Extra)
-                    .Replace("[--link--]", Link)
-                    .Replace("[--linkname--]", LinkName);
-
-                string c = "";
-                if (Capabilities != null && Capabilities.Length > 0)
-                {
-                    foreach (string cc in Capabilities)
-                    {
-                        c += "<li>" + cc + "</li>";
-                    }
-                }
-                text = text.Replace("[--capabilities--]", c);
-                return ModScriban.Page(Resource.FromString(text)).Title(Subtitle);
-            }
-        }
-
-        public static AI[] all = new AI[]
-        {
-            new AI ()
-            {
-                Name = "C-1",
-                Ref = "c1",
-                Subtitle = "Contextual Model C-1",
-                Description = "Intelligence utilising pre-scripted commands for action and response feedback.",
-                Language = "C#",
-                Capabilities = new string[] {"It works", "Maybe"},
-                Extra = "",
-                Link = "http://www.google.com.au",
-                LinkName = "Google",
-                Status = "Idle"
-            },
-            new AI ()
-            {
-                Name = "C-2",
-                Ref = "c2",
-                Subtitle = "Contextual Model C-2",
-                Description = "Intelligence utilising pre-scripted commands for action and response feedback.",
-                Language = "C#",
-                Capabilities = new string[] {"It works", "Maybe"},
-                Extra = "",
-                Link = "http://www.google.com.au",
-                LinkName = "Google",
-                Status = "Idle"
-            },
-            new AI ()
-            {
-                Name = ".NR-1",
-                Ref = "nr1",
-                Subtitle = "Hybrid .Net + RASA ML Agent",
-                Description = "description",
-                Language = "C#, Python",
-                Capabilities = new string[] {"It works", "Maybe"},
-                Extra = "",
-                Link = "http://www.google.com.au",
-                LinkName = "Google",
-                Status = "Halted"
-            },
-            new AI ()
-            {
-                Name = "MBF-1",
-                Ref = "mbf1",
-                Subtitle = "Microsoft Bot Framework - Medical",
-                Description = "description",
-                Language = "C#",
-                Capabilities = new string[] {"It works", "Maybe"},
-                Extra = "",
-                Link = "http://www.google.com.au",
-                LinkName = "Google",
-                Status = "In Development"
-            }
-        };
-    }
     public static class GameHandler
     {
         public class Game
@@ -195,11 +102,8 @@ namespace GenHTTP_WebServer
             {
                 StartTunnel();
             }
-            return Host.Create()
-                .Defaults()
-                .Console()
-                .Handler(Setup())
-                .Run();
+            Setup();
+            return 0;
         }
 
         public static void StartTunnel ()
@@ -213,7 +117,7 @@ namespace GenHTTP_WebServer
             process = Process.Start(processInfo);
         }
 
-        private static IHandlerBuilder Setup()
+        private static void Setup()
         {
             var resources = new string[]
             {
@@ -221,89 +125,36 @@ namespace GenHTTP_WebServer
                 "logo.png"
             };
 
-            var index = ModScriban.Page(Resource.FromAssembly("index.html")).Title("Home");
+            var main = Layout.Create()
+                .Add("models", Controller.From<AIController>())
+                .Add("reports", Controller.From<ReportController>())
+                .Add("user", ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems"))
+                .Index(ModScriban.Page(Resource.FromAssembly("index.html")).Title("Home"));
+            //.Add("games", Controller.From<GameController>())
+            //.Add("systems", Controller.From<SystemController>())
 
-            var userPage = ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems");
-
-            var modelPage = Page.From("AI Models", String.Format("{0} active Artificial Intelligences", AIHandler.all.Length))
-                .Description("Content Page");
-
-            var gamePage = Page.From("Games", "Games! Both currently in development, and those that have been shelved for the time being.")
-                .Description("Games Page");
-
-            var systemsPage = Page.From("Systems", "Systems for improving quality of life for both developers and players.")
-                .Description("Systems Page");
-
-            var reportsPage = Page.From("Reports", "0 New Reports")
-                .Description("Reports Page");
-
-            var games = Layout.Create()
-                .Index(gamePage);
-
-            var models = Layout.Create()
-                .Index(modelPage);
-
-            var systems = Layout.Create()
-                .Index(systemsPage);
-
-            foreach (var ai in AIHandler.all)
-            {
-                models.Add(ai.Ref, ai.GetPage());
-            }
-
-            foreach (var game in GameHandler.all)
-            {
-                games.Add(game.Path, game.GetPage());
-            }
-
-            foreach (var system in SystemHandler.all)
-            {
-                systems.Add(system.Path, system.GetPage());
-            }
-
-            var root = Layout.Create()
-                .Add("games", games)
-                .Add("models", models)
-                .Add("systems", systems)
-                .Add("reports", reportsPage)
-                .Add("user", userPage)
-                .Index(index);
 
             foreach (var resource in resources)
             {
-                root.Add(resource, Download.From(Resource.FromAssembly(resource)));
-            }
-
-            var modelLinks = new List<(string, string)>();
-            foreach (var ai in AIHandler.all)
-            {
-                modelLinks.Add((ai.Ref + "/", ai.Name));
-            }
-
-            var gameLinks = new List<(string, string)>();
-            foreach (var game in GameHandler.all)
-            {
-                gameLinks.Add((game.Path + "/", game.Name));
-            }
-
-            var systemLinks = new List<(string, string)>();
-            foreach (var system in SystemHandler.all)
-            {
-                systemLinks.Add((system.Path + "/", system.Name));
+                main.Add(resource, Download.From(Resource.FromAssembly(resource)));
             }
 
             var menu = Menu.Empty()
                     .Add("{website}", "Home")
-                    .Add("games/", "Games", gameLinks)
-                    .Add("models/", "AI Models", modelLinks)
-                    .Add("systems/", "Systems", systemLinks);
+                    .Add("/games/", "Games")
+                    .Add("/models/", "AI Models")
+                    .Add("/systems/", "Systems");
 
             var website = Website.Create()
                 .Theme(GetAdminLTE())
                 .Menu(menu)
-                .Content(root);
+                .Content(main);
 
-            return website;
+            Host.Create()
+                .Defaults()
+                .Console()
+                .Handler(website)
+                .Run();
         }
 
         private static ITheme GetAdminLTE()
@@ -348,6 +199,7 @@ namespace GenHTTP_WebServer
             return s;
         }
     }
+
 
     public static class Helpers
     {
