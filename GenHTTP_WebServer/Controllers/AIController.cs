@@ -91,5 +91,17 @@ namespace GenHTTP_WebServer.Controllers
             return ModScriban.Page(Resource.FromAssembly("ai.html"), (r, h) => new ViewModel<AI>(r, h, model))
                 .Title($"Model {model.Name}");
         }
+
+        public static List<(string,string)> Links ()
+        {
+            var n = new List<(string, string)>();
+
+            foreach (var a in _AIs)
+            {
+                n.Add(("./details/" + a.ID, a.Name));
+            }
+
+            return n;
+        }
     }
 }

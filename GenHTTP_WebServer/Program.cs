@@ -130,6 +130,7 @@ namespace GenHTTP_WebServer
                 .Add("reports", Controller.From<ReportController>())
                 .Add("user", ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems"))
                 .Index(ModScriban.Page(Resource.FromAssembly("index.html")).Title("Home"));
+            //To be added
             //.Add("games", Controller.From<GameController>())
             //.Add("systems", Controller.From<SystemController>())
 
@@ -142,7 +143,7 @@ namespace GenHTTP_WebServer
             var menu = Menu.Empty()
                     .Add("{website}", "Home")
                     .Add("/games/", "Games")
-                    .Add("/models/", "AI Models")
+                    .Add("/models/", "AI Models", AIController.Links())
                     .Add("/systems/", "Systems");
 
             var website = Website.Create()
