@@ -9,8 +9,6 @@
     <None Remove="avatar.png" />
     <None Remove="c1.html" />
     <None Remove="c2.html" />
-    <None Remove="old.game\aonar.html" />
-    <None Remove="old.game\deargod.html" />
     <None Remove="old.game\eternal-ember - Copy.html" />
     <None Remove="old.game\fas.html" />
     <None Remove="old.game\subterraneon.html" />
@@ -32,16 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="old.game\deargod.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="old.game\subterraneon.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="old.game\fas.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="old.game\aonar.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\logo.png">
@@ -54,9 +46,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\avatar.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="old.game\eternal-ember.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\index.html">
@@ -74,7 +63,7 @@
     <EmbeddedResource Include="Pages\ai_index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\gamebase.html">
+    <EmbeddedResource Include="Pages\game_index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\game.html">

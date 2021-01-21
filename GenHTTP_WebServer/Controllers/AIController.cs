@@ -22,7 +22,6 @@ namespace GenHTTP_WebServer.Controllers
             (
                 0,
                 "C-1",
-                "c1",
                 "Contextual Model C-1",
                 "Intelligence utilising pre-scripted commands for action and response feedback.",
                 "Idle",
@@ -36,7 +35,6 @@ namespace GenHTTP_WebServer.Controllers
             (
                 1,
                 "C-2",
-                "c2",
                 "Contextual Model C-2",
                 "Intelligence utilising pre-scripted commands for action and response feedback.",
                 "Idle",
@@ -50,7 +48,6 @@ namespace GenHTTP_WebServer.Controllers
             (
                 2,
                 ".NR-1",
-                "nr1",
                 "Hybrid .Net + RASA ML Agent",
                 "description",
                 "Halted",
@@ -64,7 +61,6 @@ namespace GenHTTP_WebServer.Controllers
             (
                 3,
                 "MBF-1",
-                "mbf1",
                 "Microsoft Bot Framework - Medical",
                 "description",
                 "In Development",
@@ -98,7 +94,7 @@ namespace GenHTTP_WebServer.Controllers
 
             foreach (var a in _AIs)
             {
-                n.Add(("./details/" + a.ID, a.Name));
+                n.Add(("./details/" + a.ID + "/", a.Name));
             }
 
             return n;

@@ -97,7 +97,7 @@ namespace GenHTTP_WebServer
     {
         public static int Main(string[] args)
         {
-            bool startTunnel = false;
+            bool startTunnel = true;
             if (startTunnel)
             {
                 StartTunnel();
@@ -127,11 +127,12 @@ namespace GenHTTP_WebServer
 
             var main = Layout.Create()
                 .Add("models", Controller.From<AIController>())
+                .Add("games", Controller.From<GameController>())
                 .Add("reports", Controller.From<ReportController>())
                 .Add("user", ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems"))
                 .Index(ModScriban.Page(Resource.FromAssembly("index.html")).Title("Home"));
             //To be added
-            //.Add("games", Controller.From<GameController>())
+            //.Add("games", Controller.From<GameController>()) -- not currently working
             //.Add("systems", Controller.From<SystemController>())
 
 
@@ -142,7 +143,7 @@ namespace GenHTTP_WebServer
 
             var menu = Menu.Empty()
                     .Add("{website}", "Home")
-                    .Add("/games/", "Games")
+                    .Add("/games/", "Games", GameController.Links())
                     .Add("/models/", "AI Models", AIController.Links())
                     .Add("/systems/", "Systems");
 
@@ -204,6 +205,6 @@ namespace GenHTTP_WebServer
 
     public static class Helpers
     {
-        public static string Version = "v0.0.4t";
+        public static string Version = "v0.0.5t";
     }
 }

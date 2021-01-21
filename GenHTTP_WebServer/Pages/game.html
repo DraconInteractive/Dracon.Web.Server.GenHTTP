@@ -6,18 +6,80 @@
     <title></title>
 </head>
 <body>
-    <h4>Status<small> : [--status--]</small></h4>
-    <br />
-    <p>[--description--]</p>
-    <br />
-    <p>Language: [--language--]</p>
-    <p>Capabilities:</p>
-    <ul>
-        [--capabilities--]
-    </ul>
-    <br />
-    <p>Link: <a href="[--link--]" target="blank"> [--linkname--]</a></p>
-    <br /><br />
-    [--extra--]
+    <hr />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 border-right">
+                {{if data.eternal}}
+                <h5>Eternal Network Activated</h5><br />
+                {{end}}
+                <h5>Language: {{data.language}}</h5>
+                <br /><br /><br />
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <!-- Modal Launch-->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            {{data.link_name}}
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Open external page?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        This action will open a page outside of this website. Specifically: {{data.link}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <a class="btn btn-primary" href="{{data.link}}" role="button">Proceed</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <a class="btn btn-primary" href="#" role="button">Download</a>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-10">
+                <h4>{{data.subtitle}}<small> : {{data.status}}</small></h4>
+                <br />
+                <p>{{data.description}}</p>
+                <br />
+                <p>Features:</p>
+                <ul>
+                    {{for feat in data.features}}
+                    <li>{{feat}}</li>
+                    <br />
+                    {{end}}
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                {{data.extra}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                {{if data.embed != ""}}
+                <h3>Preview</h3>
+                <iframe width="1280" height="720" src="{{data.embed}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {{end}}
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-sm">
+        
+    </div>
 </body>
 </html>
