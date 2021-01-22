@@ -24,6 +24,8 @@
     <None Remove="Pages\ai_index.html" />
     <None Remove="Pages\index.html" />
     <None Remove="Pages\reports.html" />
+    <None Remove="Pages\system.html" />
+    <None Remove="Pages\system_index.html" />
     <None Remove="sidebar.html" />
     <None Remove="old.systems\draconic-link.html" />
     <None Remove="user.html" />
@@ -46,6 +48,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\system.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\system_index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\index.html">

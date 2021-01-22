@@ -24,75 +24,6 @@ using GenHTTP_WebServer.Controllers;
 
 namespace GenHTTP_WebServer
 {
-    public static class GameHandler
-    {
-        public class Game
-        {
-            public string Name;
-            public string Path;
-
-            public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage()
-            {
-                return ModScriban.Page(Resource.FromAssembly(Path + ".html")).Title(Name);
-            }
-        }
-
-        public static Game[] all = new Game[]
-        {
-            new Game ()
-            {
-                Name = "First Aid Skills",
-                Path = "fas"
-            },
-            new Game ()
-            {
-                Name = "Eternal: Embers",
-                Path = "eternal-ember"
-            },
-            new Game ()
-            {
-                Name = "Aonar - Alone",
-                Path = "aonar"
-            },
-            new Game ()
-            {
-                Name = "SubterraNEON",
-                Path = "subterraneon"
-            },
-            new Game ()
-            {
-                Name = "Dear God",
-                Path = "deargod"
-            }
-        };
-    }
-    public static class SystemHandler
-    {
-        public class System
-        {
-            public string Name;
-            public string Path;
-
-            public GenHTTP.Modules.Scriban.Providers.ScribanPageProviderBuilder<PageModel> GetPage()
-            {
-                return ModScriban.Page(Resource.FromAssembly(Path + ".html")).Title(Name);
-            }
-        }
-
-        public static System[] all = new System[]
-        {
-            new System ()
-            {
-                Name = "CGRS",
-                Path = "cgrs"
-            },
-            new System ()
-            {
-                Name = "Draconic Link",
-                Path = "draconic-link"
-            }
-        };
-    }
     class Program
     {
         public static int Main(string[] args)
@@ -128,13 +59,10 @@ namespace GenHTTP_WebServer
             var main = Layout.Create()
                 .Add("models", Controller.From<AIController>())
                 .Add("games", Controller.From<GameController>())
+                .Add("systems", Controller.From<SystemController>())
                 .Add("reports", Controller.From<ReportController>())
                 .Add("user", ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems"))
                 .Index(ModScriban.Page(Resource.FromAssembly("index.html")).Title("Home"));
-            //To be added
-            //.Add("games", Controller.From<GameController>()) -- not currently working
-            //.Add("systems", Controller.From<SystemController>())
-
 
             foreach (var resource in resources)
             {
@@ -145,7 +73,7 @@ namespace GenHTTP_WebServer
                     .Add("{website}", "Home")
                     .Add("/games/", "Games", GameController.Links())
                     .Add("/models/", "AI Models", AIController.Links())
-                    .Add("/systems/", "Systems");
+                    .Add("/systems/", "Systems", SystemController.Links());
 
             var website = Website.Create()
                 .Theme(GetAdminLTE())
