@@ -28,7 +28,7 @@ namespace GenHTTP_WebServer
     {
         public static int Main(string[] args)
         {
-            bool startTunnel = true;
+            bool startTunnel = false;
             if (startTunnel)
             {
                 StartTunnel();
@@ -63,6 +63,7 @@ namespace GenHTTP_WebServer
                 .Add("reports", Controller.From<ReportController>())
                 .Add("user", ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems"))
                 .Index(ModScriban.Page(Resource.FromAssembly("index.html")).Title("Home"));
+
 
             foreach (var resource in resources)
             {
@@ -99,7 +100,7 @@ namespace GenHTTP_WebServer
             
             return new AdminLteBuilder().Title("Dracon Interactive")
                                         .Logo(Download.From(Resource.FromAssembly("logo.png")))
-                                        .UserProfile((r, h) => new UserProfile("User A-01", "/avatar.png", "/user"))
+                                        .UserProfile((r, h) => new UserProfile("User Page", "/avatar.png", "/user"))
                                         .FooterLeft((r, h) => Helpers.Version)
                                         .FooterRight((r, h) => "Peter M Carey (2021)")
                                         .Sidebar((r, h) => SideBarConstructor())
@@ -112,20 +113,7 @@ namespace GenHTTP_WebServer
         private static string SideBarConstructor ()
         {
             string s = "";
-            s += "Networked Services: Active";
-            s += "<br><br>";
-            s += "Connection to AI units established.";
-            s += "<br>";
-            s += "<ul>";
-            s += "<li>[0] C-1 | Idle |</li>";
-            s += "<li>[1] C-1 | Idle |</li>";
-            s += "<li>[2] C-2 | Idle |</li>";
-            s += "<li>[3] .NR-1 | Responsive |</li>";
-            s += "<li>[4] WS-1 | State 2 |</li>";
-            s += "<li>[5] WS-1 | State 5 |</li>";
-            s += "</ul>";
-            s += "<br><br>";
-            s += "Game Services Running. 52 users within the last hour";
+            s += "Sidebar!";
             return s;
         }
     }
@@ -133,6 +121,6 @@ namespace GenHTTP_WebServer
 
     public static class Helpers
     {
-        public static string Version = "v0.0.5t";
+        public static string Version = "v0.0.6t";
     }
 }

@@ -1,17 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk;Microsoft.NET.Sdk.Publish">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="avatar.png" />
     <None Remove="c1.html" />
     <None Remove="c2.html" />
-    <None Remove="old.game\eternal-ember - Copy.html" />
-    <None Remove="old.game\fas.html" />
-    <None Remove="old.game\subterraneon.html" />
     <None Remove="header.jpg" />
     <None Remove="Images\logo.png" />
     <None Remove="index.html" />
@@ -27,24 +22,10 @@
     <None Remove="Pages\system.html" />
     <None Remove="Pages\system_index.html" />
     <None Remove="sidebar.html" />
-    <None Remove="old.systems\draconic-link.html" />
     <None Remove="user.html" />
   </ItemGroup>
-
   <ItemGroup>
-    <EmbeddedResource Include="old.game\subterraneon.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="old.game\fas.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Images\logo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="old.systems\draconic-link.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="old.systems\cgrs.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\avatar.png">
@@ -56,7 +37,7 @@
     <EmbeddedResource Include="Pages\system_index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\index.html">
+    <EmbeddedResource Include="index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\sidebar.html">
@@ -90,7 +71,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="GenHTTP.Core" Version="5.2.0" />
     <PackageReference Include="GenHTTP.Modules.Basics" Version="5.2.0" />
@@ -101,5 +81,9 @@
     <PackageReference Include="GenHTTP.Themes.AdminLTE" Version="5.1.0" />
     <PackageReference Include="GenHTTP.Themes.Arcana" Version="5.1.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Update="Settings.job">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
