@@ -62,7 +62,7 @@ namespace GenHTTP_WebServer
                 .Add("systems", Controller.From<SystemController>())
                 .Add("reports", Controller.From<ReportController>())
                 .Add("user", ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems"))
-                .Index(ModScriban.Page(Resource.FromAssembly("index.html")).Title("Home"));
+                .Index(ModScriban.Page(Resource.FromFile("Pages/index.html")).Title("Home"));
 
 
             foreach (var resource in resources)
@@ -92,7 +92,7 @@ namespace GenHTTP_WebServer
         {
             var menu = Menu.Empty()
                            .Add("{website}/", "Home")
-                           .Add("{website}/reports", "Reports");
+                           .Add("/reports/", "Reports");
 
             var notifications = ModScriban.Template<IBaseModel>(Resource.FromAssembly("Notifications.html"))
                                           .Build();
@@ -121,6 +121,6 @@ namespace GenHTTP_WebServer
 
     public static class Helpers
     {
-        public static string Version = "v0.0.6t";
+        public static string Version = "v0.0.7t";
     }
 }

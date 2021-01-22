@@ -7,10 +7,23 @@
 </head>
 <body>
     <h4>Games currently in development, as well as those shelved for the time being, including;</h4>
-    <ul>
-        {{for game in data.games}}
-        <li>{{game.name}}</li>
-        {{end}}
-    </ul>
+    <div class="container-fluid">
+        <div class="row">
+            {{for game in data.games}}
+            <!--<li>{{game.name}}</li>-->
+            <div class="col-sm-2">
+                <div class="card" style="width: 18rem;">
+                    <img src="logo.png" class="card-img-top" alt="avatar">
+                    <div class="card-body">
+                        <h5 class="card-title">{{game.name}}</h5>
+                        <p class="card-text">{{game.subtitle}}</p>
+                        <a href="./details/{{game.id}}/" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+    
 </body>
 </html>

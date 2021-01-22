@@ -37,9 +37,9 @@
     <EmbeddedResource Include="Pages\system_index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="index.html">
+    <Content Include="Pages\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <EmbeddedResource Include="Pages\sidebar.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -80,10 +80,5 @@
     <PackageReference Include="GenHTTP.Modules.Websites" Version="5.2.0" />
     <PackageReference Include="GenHTTP.Themes.AdminLTE" Version="5.1.0" />
     <PackageReference Include="GenHTTP.Themes.Arcana" Version="5.1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Settings.job">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>
