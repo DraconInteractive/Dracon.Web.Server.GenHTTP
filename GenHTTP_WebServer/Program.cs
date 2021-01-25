@@ -53,12 +53,15 @@ namespace GenHTTP_WebServer
             var resources = new string[]
             {
                 "avatar.png",
-                "logo.png"
+                "logo.png",
+                "mia.png"
             };
 
             var main = Layout.Create()
                 .Add("models", Controller.From<AIController>())
-                .Add("games", Controller.From<GameController>())
+                .Add("games-main", Controller.From<GameController>())
+                .Add("games-ggj", Controller.From<GGJController>())
+                .Add("games-eternal", Controller.From<EternalController>())
                 .Add("systems", Controller.From<SystemController>())
                 .Add("reports", Controller.From<ReportController>())
                 .Add("user", ModScriban.Page(Resource.FromAssembly("user.html")).Title("Internal Systems"))
@@ -72,7 +75,9 @@ namespace GenHTTP_WebServer
 
             var menu = Menu.Empty()
                     .Add("{website}", "Home")
-                    .Add("/games/", "Games", GameController.Links())
+                    .Add("/games-main/", "Games - Main", GameController.Links())
+                    .Add("/games-eternal/", "Games - Eternal", EternalController.Links())
+                    .Add("/games-ggj/", "Games - GGJ", GGJController.Links())
                     .Add("/models/", "AI Models", AIController.Links())
                     .Add("/systems/", "Systems", SystemController.Links());
 
@@ -121,6 +126,6 @@ namespace GenHTTP_WebServer
 
     public static class Helpers
     {
-        public static string Version = "v0.0.7t";
+        public static string Version = "v0.0.8t";
     }
 }

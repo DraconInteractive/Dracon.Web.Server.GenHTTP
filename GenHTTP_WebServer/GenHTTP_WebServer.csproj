@@ -9,6 +9,7 @@
     <None Remove="c2.html" />
     <None Remove="header.jpg" />
     <None Remove="Images\logo.png" />
+    <None Remove="Images\mia.png" />
     <None Remove="index.html" />
     <None Remove="logo.png" />
     <None Remove="Models\ai.html" />
@@ -17,6 +18,8 @@
     <None Remove="Models\game.html" />
     <None Remove="Notifications.html" />
     <None Remove="Pages\ai_index.html" />
+    <None Remove="Pages\eternal_index.html" />
+    <None Remove="Pages\ggj.html" />
     <None Remove="Pages\index.html" />
     <None Remove="Pages\reports.html" />
     <None Remove="Pages\system.html" />
@@ -29,6 +32,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\mia.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\eternal_index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ggj.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\system.html">
@@ -62,9 +74,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\header.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\old.index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Notifications.html">

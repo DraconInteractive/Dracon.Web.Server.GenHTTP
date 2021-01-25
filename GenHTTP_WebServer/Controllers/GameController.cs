@@ -19,58 +19,31 @@ namespace GenHTTP_WebServer.Controllers
         {
             new Game
             (
-                0,
-                true,
-                "Eternal: Ember",
-                "Fantasy RPG",
-                "The first of the Eternal series, Ember represents the culmination of my game development knowledge. Continually being reworked, not even I know when it will be finished, but I continually return to its development as my ultimate passion project.",
-                "In Development",
-                "Unknown",
-                "C# (Unity)",
-                "PC - Windows",
-                new string[] {"Third Person", "Deep and immersive story", "'Eternal Network' integration"},
-                "http://www.draconinteractive.com.au/eternal-ember/",
-                "Website",
-                "",
-                ""
-            ),
-            new Game
-            (
-                1,
-                true,
-                "Eternal: Conflict",
-                "Scifi FPS",
-                "Set a millenium after the events of Eternal: Ember, Conflict is an intense shooter that explores the evolution of the grand themes of Ember; Politics, religion, art and society being but a few.",
-                "In Development",
-                "Unknown",
-                "C# (Unity)",
-                "PC - Windows, XBox Series X",
-                new string [] {"First Person scifi combat", "A variety of weapons and character enhancements", "'Eternal Network' integration"},
-                "http://www.draconinteractive.com.au/eternal-conflict/",
-                "Website",
-                "",
-                ""
-            ),
-            new Game
-            (
-                2,
+                3,
                 false,
                 "First Aid Skills",
-                "VR Training Simulator",
-                "[Description]",
+                "First Aid Training Simulator",
+                "The focus of my work over the last three (3) years, First Aid Skills has taught me more than any other project, in both practical game development, and soft skills like communication, team management and leadership." +
+                "<br>In 2017, St John created the Product Development team, my team. The purpose was to reinvent first aid training, and bring it into the new age. I joined this team in 2018, around 8 months after its conception. There was still plenty of work to be done, and I am still working on it to this day! " +
+                "I am forever thankful for the amazing work done by my predecessor, Camille Woodthorpe, for the work she did on establishing such a solid foundation that I could grow upon." +
+                "<br>Over the next year, I worked closely with my local team, a 3D Artist (Tayla James), another Developer (Ivan Ng) and our Project Manager (Jeremy Burton). I also worked with an outsourced game studio, Emerge Worlds. Collaborating with this team taught me a lot about coping with the challenges remote work can present." +
+                "<br>Finally, late 2019, we released our project onto iOS and Android. Our WebGL platform was released a few months later, March 2020, to cope with the suspension of face-to-face training from COVID." +
+                "<br>While we have not yet officially released our VR platform, this is due to a focus on an enterprise customer, and making sure we can provide features required as such. ",
                 "Released -> In Development",
                 "2019",
                 "C# Unity, C++, Python",
                 "Oculus Quest, iOS, Android, WebGL",
-                new string[] {},
-                "http://www.stjohnwa.com.au/my-account/first-aid-skills-web",
+                new string[] {"Multi-Platform Support", "Linear scene flow", "6 distinct environments", "A fully voiced first aid instructor, the robot Mia"},
+                "https://stjohnwa.com.au/first-aid-training/first-aid-skills",
                 "Website",
                 "",
-                ""
+                new List<(string,string)> { ("IMAGE", "mia.png"), ("VIDEO", "https://player.vimeo.com/video/349366560")},
+                "mia.png",
+                new GameComponent[]{ }
             ),
             new Game
             (
-                3,
+                4,
                 false,
                 "Aonar - Alone",
                 "Ethereal Experience",
@@ -83,11 +56,16 @@ namespace GenHTTP_WebServer.Controllers
                 "http://www.draconinteractive.com.au/aonar",
                 "Website",
                 "",
-                "https://www.youtube.com/embed/8L7eyBdHymA"
+                new List<(string,string)> {("VIDEO", "https://www.youtube.com/embed/8L7eyBdHymA" )},
+                "logo.png",
+                new GameComponent[]
+                { 
+                    new GameComponent ("View", "The dissolving view shader was one of the largest education components of this project.", new List<(string, string)>(){("Shadergraph", "sgdkjhasg"), ("C# Integration", "afdsghassg")})
+                }
             ),
             new Game
             (
-                4,
+                5,
                 false,
                 "Dear God",
                 "VR God Puzzle",
@@ -100,7 +78,66 @@ namespace GenHTTP_WebServer.Controllers
                 "http://www.draconinteractive.com.au/dear-god",
                 "Website",
                 "",
-                "https://www.youtube.com/embed/4KzpXrHUzFU"
+                new List<(string,string)> {("VIDEO","https://www.youtube.com/embed/4KzpXrHUzFU" )},
+                "logo.png",
+                new GameComponent[]{ }
+            ),
+            new Game
+            (
+                6,
+                false,
+                "Earth and Lava",
+                "Shadergraph Exposition",
+                "This is a 'planet' shader that I made when shadergraph was first released. Its not the most realistic shader that I've ever made, but it was a lot of fun and I'm fond of how calming the final product was.",
+                "Finished",
+                "2019",
+                "C#, HLSL",
+                "PC",
+                new string[] {"Unity LWRP", "Shadergraph", "Procedurally generated", "No models. No materials. Only code."},
+                "",
+                "",
+                "",
+               new List<(string,string)> {("VIDEO", "https://www.youtube.com/embed/29qf6VCEeps" )},
+                "logo.png",
+                new GameComponent[]{ }
+            ), 
+            new Game
+            (
+                7,
+                false,
+                "Hero Rising",
+                "Simple Resource Management RPG",
+                "I completed this project during my Bachelor degree, as part of a unit covering commercialisation of video games. I wanted to make a simple repetitive game loop that encouraged the player to grow and continue. I integrated In-App-Purchasing for if the player wanted to fast forward this process.<br />Needless to say, with my extra 5-ish years of experience, I would do a lot of things differently, but it was an educational project while it lasted.",
+                "Finished",
+                "2016",
+                "C#",
+                "PC",
+                new string[] {"Early Unity version", "Featuring sick models from the animation class", "Who needs shadows? Apparently not me."},
+                "",
+                "",
+                "",
+                new List<(string,string)> {("VIDEO", "https://www.youtube.com/embed/29qf6VCEeps") },
+                "logo.png",
+                new GameComponent[]{ }
+            ),
+            new Game
+            (
+                8,
+                false,
+                "Draco Terrum",
+                "World Building",
+                "Over the years, I seem to return to world-building a lot. It's no secret that I am a more practical, mechanics based person, but narrative design is something I enjoy without being particularly skilled at it. Draco Terrum is the child of these two traits combining. A repository of my various thoughts and dreams around the Dracon universes. This has been specifically helpful regarding the Eternal series, and how the various games within it intertwine.",
+                "Ongoing",
+                "",
+                "C#",
+                "PC, WebGL",
+                new string[] {"All the information", "Procedural planet shaders, including really obvious seams due to a lack of UV knowledge at the time", "Really bad UI design, that I'm totally going to refactor one day", "A procedural ... sun?"},
+                "https://dracon-interactive.itch.io/draco-terrum",
+                "Itch.IO",
+                "",
+                new List<(string,string)> {("VIDEO", "https://www.youtube.com/embed/29qf6VCEeps") },
+                "logo.png",
+                new GameComponent[]{ }
             )
         };
     
@@ -111,14 +148,6 @@ namespace GenHTTP_WebServer.Controllers
             return ModScriban.Page(Resource.FromAssembly("game_index.html"), (r, h) => new ViewModel<GameModel>(r, h, model))
                             .Title("Games");
         }
-        /*
-        public IHandlerBuilder Eternal_Index()
-        {
-            var model = new GameModel(_Games);
-
-            return ModScriban.Page(Resource.FromAssembly("eternal_index.html"), (r, h) => new ViewModel<GameModel>(r, h, model))
-                            .Title("The Eternal Series");
-        }*/
 
         public IHandlerBuilder Details([FromPath] int id)
         {
@@ -134,15 +163,7 @@ namespace GenHTTP_WebServer.Controllers
 
             foreach (var a in _Games)
             {
-                if (a.Eternal)
-                {
-                    n.Add(("./details/" + a.ID + "/", a.Name));//Want to add a sub type (e.g /eternal/) in the future
-                } 
-                else
-                {
-                    n.Add(("./details/" + a.ID + "/", a.Name));
-                }
-                
+                n.Add(("./details/" + a.ID + "/", a.Name));
             }
 
             return n;
