@@ -8,6 +8,10 @@
     <None Remove="c1.html" />
     <None Remove="c2.html" />
     <None Remove="header.jpg" />
+    <None Remove="Images\ee1.PNG" />
+    <None Remove="Images\ee2.PNG" />
+    <None Remove="Images\ee3.PNG" />
+    <None Remove="Images\ee4.PNG" />
     <None Remove="Images\logo.png" />
     <None Remove="Images\mia.png" />
     <None Remove="index.html" />
@@ -28,6 +32,18 @@
     <None Remove="user.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\ee1.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ee2.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ee3.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\ee4.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

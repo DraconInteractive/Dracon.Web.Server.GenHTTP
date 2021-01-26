@@ -41,8 +41,15 @@ namespace GenHTTP_WebServer.Controllers
                 new string[] {"Third Person", "Strategic gameplay", "Abstract art style", "Deep and immersive story", "'Eternal Network' integration"},
                 "http://www.draconinteractive.com.au/eternal-ember/",
                 "Website",
+                "https://draconstorage.blob.core.windows.net/builds/EEM-IV-V0.2.zip",
                 "",
-                new List<(string,string)> { },
+                new List<(string,string)> 
+                {
+                    ("IMAGE","/ee1.PNG"),
+                    ("IMAGE","/ee2.PNG"),
+                    ("IMAGE","/ee3.PNG"),
+                    ("IMAGE","/ee4.PNG")
+                },
                 "logo.png",
                 new GameComponent[]
                 {
@@ -52,10 +59,10 @@ namespace GenHTTP_WebServer.Controllers
                         "A Third-Person follow cam, able to be orbited around the player. The system uses direct movement for accuracy, but dampens the result for player comfort.",
                         new List<(string, string)>()
                         {
-                            ("Follow", "using djagjasgjkasdgklj<br>sddfjasdfjhasdghasgd<br>asdjkghaskjdhga"),
+                            ("Follow", "[Code here]"),
                             ("Dampen","using klsdgksagd<br>sadkjdgasdgjh<br>sadhasgklhjasdg"),
-                            ("Predict Movement", "using djagjasgjkasdgklj<br>sddfjasdfjhasdghasgd<br>asdjkghaskjdhga"),
-                            ("Cinematics","using klsdgksagd<br>sadkjdgasdgjh<br>sadhasgklhjasdg")
+                            ("Predict Movement", "[Code here]"),
+                            ("Cinematics","[Code here]")
                         }
                     ),
                     new GameComponent
@@ -64,10 +71,10 @@ namespace GenHTTP_WebServer.Controllers
                         "Player movement is based entirely on the Unity NavMesh system. The player navigates via clicking with either the left or right mouse button on the level. The character will navigate to the area if possible. If the click is on an enemy, or an interactable item, the player will also begin the interactive process.",
                         new List<(string, string)>()
                         {
-                            ("Select Destination", "using djagjasgjkasdgklj<br>sddfjasdfjhasdghasgd<br>asdjkghaskjdhga"),
-                            ("Detect Interaction","using klsdgksagd<br>sadkjdgasdgjh<br>sadhasgklhjasdg"),
-                            ("Animate", "using djagjasgjkasdgklj<br>sddfjasdfjhasdghasgd<br>asdjkghaskjdhga"),
-                            ("Collider","using klsdgksagd<br>sadkjdgasdgjh<br>sadhasgklhjasdg")
+                            ("Select Destination", "[Code here]"),
+                            ("Detect Interaction","[Code here]"),
+                            ("Animate", "[Code here]"),
+                            ("Collider","[Code here]")
                         }
                     ),
                     new GameComponent
@@ -76,7 +83,7 @@ namespace GenHTTP_WebServer.Controllers
                         "Ember uses a traditional RPG style item system. Items have a variety of statistics depending on their type, such as weapon, consumable or crafting material.<br>? They can be stored in enemy drops, the player inventory, crafting stations, NPC's and containers such as chests.",
                         new List<(string, string)>()
                         {
-                            ("test", "test")
+                            ("Add / Remove", "[Code here]")
                         }
                     ),
                     new GameComponent
@@ -85,7 +92,7 @@ namespace GenHTTP_WebServer.Controllers
                         "Currently, I am using a very loose inventory system, as I'm not fond of how restrictive modern inventory systems can be. The inventory is slot based, allows item stacking, and its only limitation is its size (64 slots). Interestingly, that was just how many slots fit the UI, and wasnt connected to the size of the data being stored.<br>The current item system stores item template data within the game, however future versions will update items from a central server, where I can remotely tweak item values, and add new items. This means the player will require an active internet connection, which I have deemed feasible (the game wont be constantly drawing such as live multiplayer, just updating specs at start and save).",
                         new List<(string, string)>()
                         {
-                            ("test", "test")
+                            ("Display", "[Code here]")
                         }
                     )
                 }
@@ -105,6 +112,7 @@ namespace GenHTTP_WebServer.Controllers
                 "http://www.draconinteractive.com.au/eternal-conflict/",
                 "Website",
                 "",
+                "",
                 new List<(string,string)> {("VIDEO", "https://www.youtube.com/embed/1eOEcRqIXc4") },
                 "logo.png",
                 new GameComponent[]{ }
@@ -123,6 +131,7 @@ namespace GenHTTP_WebServer.Controllers
                 new string [] {"Build your base, and unlock new resources and mechanics", "Sync your progress with other Eternal Games", "Let it build in the background while you play"},
                 "http://www.draconinteractive.com.au/eternal-online.html",
                 "Website",
+                "",
                 "",
                 new List<(string,string)> { },
                 "logo.png",

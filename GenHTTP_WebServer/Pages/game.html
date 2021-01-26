@@ -17,17 +17,18 @@
                 <br /><br /><br />
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <!-- Modal Launch-->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        {{if data.link_name != ""}}
+                        <!-- Modal Launch - data.link-->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#datalink">
                             {{data.link_name}}
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="datalink" tabindex="-1" role="dialog" aria-labelledby="datalinkLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Open external page?</h5>
+                                        <h5 class="modal-title" id="datalinkLabel">Open external page?</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -42,9 +43,36 @@
                                 </div>
                             </div>
                         </div>
+                        {{end}}
                     </div>
                     <div class="btn-group mr-2" role="group" aria-label="Second group">
-                        <a class="btn btn-primary" href="#" role="button">Download</a>
+                        {{if data.download != ""}}
+                        <!-- Modal Launch - data.download-->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#downlink">
+                            Download
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="downlink" tabindex="-1" role="dialog" aria-labelledby="downlinkLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="downlinkLabel">Download file?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        This action will begin a download, from this link: {{data.download}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <a class="btn btn-primary" href="{{data.download}}" role="button">Proceed</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{end}}
                     </div>
                 </div>
             </div>
@@ -87,8 +115,10 @@
                 <h4>{{comp.name}}</h4>
                 <br />
                 <p>{{comp.description}}</p>
+                <!--
                 <br />
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="{{y=0}}{{for part in comp.part}}collapse{{y}} {{y = y + 1}}{{end}}">Toggle all</button>
+                -->
                 <br />
                 {{if comp.part.size > 0}}
                 <div class="accordion" id="accordionExample">
@@ -131,13 +161,13 @@
                 <div id="c_prev" class="carousel slide" data-interval="false">
                     <div class="carousel-inner">
                         {{for embed in data.embed}}
-                        <div class="carousel-item">
+                        <div class="carousel-item-active">
                             {{if embed.item1 == "VIDEO"}}
                             <div class="d-block w-100">
                                 <iframe src="{{embed.item2}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             {{else if embed.item1 == "IMAGE"}}
-                            <img class="d-block w-100" src="/{{embed.item2}}"/>
+                            <img class="d-block w-100" src="{{embed.item2}}"/>
                             {{end}}
                         </div>
                         {{end}}

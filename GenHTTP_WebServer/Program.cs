@@ -54,7 +54,11 @@ namespace GenHTTP_WebServer
             {
                 "avatar.png",
                 "logo.png",
-                "mia.png"
+                "mia.png",
+                "ee1.PNG",
+                "ee2.PNG",
+                "ee3.PNG",
+                "ee4.PNG"
             };
 
             var main = Layout.Create()
